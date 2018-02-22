@@ -1,0 +1,39 @@
+{
+	"name": "iRacing add driver to league",
+	"version": "0.1",
+	"manifest_version": 2,
+	"description": "Automated addition of league members via iRacing.com",
+	"homepage_url": "https://geek.hellyer.kiwi/",
+/*
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+*/
+ 	"browser_action": {
+			"default_icon": {
+				"16": "icons/icon16.png",
+				"48": "icons/icon48.png",
+				"128": "icons/icon128.png"
+			},
+			"default_title": "iRacing Messaging",
+			"default_popup": "options.html"
+	},
+	"permissions": [
+//		"https://m.facebook.com/",
+		"storage"
+//		"background",
+//		"tabs"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"http://members.iracing.com/membersite/member/LeagueView.do?league=*",
+				"http://members.iracing.com/membersite/member/SendLeagueRequest"
+			],
+			"js": [
+				"iracing-add-drivers-to-league.js"
+			]
+		}
+	]
+}
